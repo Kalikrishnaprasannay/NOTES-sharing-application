@@ -48,17 +48,16 @@ This platform connects multiple users on a single interface, categorized as Stud
 - 🔐 Secure Sharing and Access Control
 - ⚙️ Integration and Compatibility with future extensions
 
+## 🎥 Watch Demo Video
+
+👉 [Watch Demo Video on Google Drive](https://drive.google.com/file/d/1XOS-ApIcG4dxZRobYn-PK0LOdyEdAkWC/view?usp=drive_link)
+
 ## 📈 Enhancements in Pipeline
 
 - 📷 Scanner Integration for uploading handwritten notes
 - 👨‍👩‍👧‍👦 Group Creation for project/team collaboration
 - ⭐ Favorites and Badges for user engagement
 - 🔁 Code Sharing & Bug Tracking for tech organizations
-
-## Working Demo
-
-🎥 [Watch Demo Video]([https://drive.google.com/file/d/your_file_id/view](https://drive.google.com/file/d/1XOS-ApIcG4dxZRobYn-PK0LOdyEdAkWC/view?usp=drive_link))
-
 
 ## ✅ Conclusion
 
@@ -70,9 +69,7 @@ This platform connects multiple users on a single interface, categorized as Stud
 
 **Kalikrishna Prasanna Yalamati**  
 https://github.com/Kalikrishnaprasannay | krishnaprasanna2003@gmail.com
+
 ---
 
-## 📬 Contact
-
-For queries or collaboration: [Your Email/LinkedIn/GitHub Profile]
 
