@@ -1,0 +1,130 @@
+{% extends 'navigation.html'%}
+{% block body%}
+{% load static%}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        input[type=radio],input[type=checkbox]{
+        transform:scale(1);
+        marign-right:2em;
+        }
+        *{
+        padding:0;
+        margin:0;
+        box-sizing:border-box;
+        }
+        body{
+        font-family:'outfit';
+        background:linear-gradient(#ffdad5,#fff7f9);
+        }
+        .contact-container{
+        height:100vh;
+        display:flex;
+        align-items:center;
+        justify-content:space-evenly;
+        }
+        .contact-left{
+        display:flex;
+        flex-direction:column;
+        align-items:start;
+        }
+        .contact-left-title h2{
+        font-weight:600;
+        color:#a363aa;
+        font-size:40px;
+        margin-bottom:5px;
+        }
+        .contact-inputs{
+        width:400px;
+        height:50px;
+        border:none;
+        outline:none;
+        padding-left:25px;
+        font-weight:500;
+        color:#666;
+        border-radius:50px;
+        }
+        .contact-inputs:focus{
+        border:2px solid #ff994f;
+        }
+        .contact-inputs::placeholder{
+        color:#a9a9a9;
+        }
+        .contact-left button{
+        display:flex;
+        align-items:center;
+        padding:15px 30px;
+        font-size:16px;
+        color:#fff;
+        gap:10px;
+        border:none;
+        border-radius:50px;
+        background:linear-gradient(270deg,#ff994f,#fa6d86);
+        cursor:pointer;
+        }
+        .contact-left button img{
+        height:15px;
+        }
+    </style>
+</head>
+<body>
+<div class="contact-container">
+    <div class="row">
+        <div class="col">
+            <h2 class="contact-left-title">Existing Users</h2>
+            <center><a href="{% url 'login' %}" class="btn btn-info text-white mt-5">Sign In</a></center>
+        </div>
+        <br><br>
+        <div class="col">
+            <h2 class="contact-left-title">Sign Up with the application</h2>
+            <form method="post" class="contact-left">
+                {% csrf_token %}
+                <label>FirstName:</label>
+                <input type="text" class="contact-inputs" placeholder="FirstName" name="firstname" required>
+                <label>LastName:</label>
+                <input type="text" class="contact-inputs" placeholder="LastName" name="lastname" required>
+                <label>Contact:</label>
+                <input type="text" class="contact-inputs" placeholder="Contact" name="contact" required>
+                <label>EmailId:</label>
+                <input type="email" class="contact-inputs" placeholder="EmailId" name="eid" required>
+                <label>Password:</label>
+                <input type="password" class="contact-inputs" placeholder="Password" name="password" required>
+                <label>Branch:</label>
+                <select class="contact-inputs" name="branch" style="color:indigo;" required>
+                    <option value="CSE">CSE</option>
+                    <option value="ECE">ECE</option>
+                    <option value="IT">IT</option>
+                    <option value="EEE">EEE</option>
+                    <option value="CIVIL">CIVIL</option>
+                </select>
+                <label>UserType:</label>
+                <select class="contact-inputs" name="user" style="color:indigo;" required>
+                    <option value="Student">Student</option>
+                    <option value="Teacher">Teacher</option>
+                </select>
+                <button type="submit" value="SUBMIT">Submit<img src="{% static 'images/arrow_icon.png'%}" alt=""></button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
+{%ifequal error "no"%}
+<script>
+    alert('Signup Successfull');
+    window.location=('{% url 'login' %}');
+</script>
+{%endifequal %}
+
+{%ifequal error "yes"%}
+<script>
+    alert('Something Went Wrong, Try Again');
+</script>
+{%endifequal%}
+
+{% endblock %}

@@ -1,0 +1,25 @@
+
+.nav-link{
+color:white;
+}
+.nav-link:hover{
+color:white;
+font-weight:bold;
+background-color:mediumvioletred;
+border-radius:10px;
+}
+.blink {
+animation: blinker 1.5s linear infinite;
+font-family: sans-serif;
+}
+@keyframes blinker {
+1% {
+opacity: 0;
+}
+}
+.text-container{
+width:100%;
+heigth:470px;
+border:0px none;
+opacity:0.6;
+}

@@ -1,0 +1,121 @@
+{% extends 'navigation.html'%}
+{% block body%}
+{% load static%}
+{%ifequal error "no"%}
+<script>
+    alert('Logged In Successfully');
+    window.location=('{% url 'profile' %}');
+</script>
+{%endifequal %}
+
+{%ifequal error "yes"%}
+<script>
+    alert('Invalid Login Credentials, Try Again');
+</script>
+{%endifequal%}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        input[type=radio],input[type=checkbox]{
+        transform:scale(1);
+        marign-right:2em;
+        }
+        *{
+        padding:0;
+        margin:0;
+        box-sizing:border-box;
+        }
+        body{
+        font-family:'outfit';
+        background:linear-gradient(#ffdad5,#fff7f9);
+        }
+        .contact-container{
+        height:100vh;
+        display:flex;
+        align-items:center;
+        justify-content:space-evenly;
+        }
+        .contact-left{
+        display:flex;
+        flex-direction:column;
+        align-items:start;
+        gap:20px;
+        }
+        h2{
+        font-weight:600;
+        color:#a363aa;
+        font-size:40px;
+        margin-bottom:5px;
+        }
+        .contact-inputs{
+        width:400px;
+        height:50px;
+        border:none;
+        outline:none;
+        padding-left:25px;
+        font-weight:500;
+        color:#666;
+        border-radius:50px;
+        }
+        .contact-inputs:focus{
+        border:2px solid #ff994f;
+        }
+        .contact-inputs::placeholder{
+        color:#a9a9a9;
+        }
+        .contact-left button{
+        display:flex;
+        align-items:center;
+        padding:15px 30px;
+        font-size:16px;
+        color:#fff;
+        gap:10px;
+        border:none;
+        border-radius:50px;
+        background:linear-gradient(270deg,#ff994f,#fa6d86);
+        cursor:pointer;
+        }
+        .contact-left button img{
+        height:15px;
+        }
+        .forget {
+        margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="contact-container">
+    <div class="row">
+        <div class="col-sm-6">
+            <h2 class="text-center">New Users</h2>
+            <p>Create an account to access the features
+                of the website.
+            </p>
+            <center><a href="{% url 'signup' %}" class="btn btn-info text-white mt-5">Create Account</a></center>
+        </div>
+        <br>
+        <div class="col-sm-6">
+            <h2 class="text-center">User Login</h2>
+            <br>
+            <form method="post" class="contact-left">
+                {% csrf_token %}
+                <label>Email:</label>
+                <input type="email" class="contact-inputs" placeholder="Email" name="emailid" required>
+                <label>Password:</label>
+                <input type="password" class="contact-inputs" placeholder="Password" name="pwd" required>
+                <p class="forget">Forgot password? <a href="#">Click here</a></p>
+                <button type="submit">Submit<img src="{% static 'images/arrow_icon.png'%}" alt=""></button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
+
+
+{% endblock %}

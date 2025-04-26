@@ -1,0 +1,100 @@
+{% extends 'usernavigation.html'%}
+{% block body%}
+{% load static%}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        input[type=radio],input[type=checkbox]{
+        transform:scale(1);
+        marign-right:2em;
+        }
+        *{
+        padding:0;
+        margin:0;
+        box-sizing:border-box;
+        }
+        body{
+        font-family:'outfit';
+        background:linear-gradient(#ffdad5,#fff7f9);
+        }
+        button{
+        display:flex;
+        align-items:center;
+        padding:15px 30px;
+        font-size:16px;
+        color:#fff;
+        gap:10px;
+        border:none;
+        border-radius:50px;
+        background:linear-gradient(270deg,#ff994f,#fa6d86);
+        cursor:pointer;
+        }
+        .button img{
+        height:15px;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="text-center">Upload Notes</h2>
+    <hr>
+    <div class="row">
+        <div class="col-sm-6">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label>Branch:</label>
+                <select type="text" class="form-control" name="branch">
+                    <option value="">---Select Branch---</option>
+                    <option value="CSE">CSE</option>
+                    <option value="ECE">ECE</option>
+                    <option value="IT">IT</option>
+                    <option value="EEE">EEE</option>
+                    <option value="CIVIL">CIVIL</option>
+                </select>
+                <label>Subject:</label>
+                <input type="text" class="form-control" placeholder="Enter Subject Name" name="subject">
+                <label>Notes File:</label>
+                <input type="file" class="form-control" name="notesfile">
+                <label>File Type:</label>
+                <select type="text" class="form-control" name="filetype">
+                    <option value="">---Select File Type---</option>
+                    <option value="PDF">PDF</option>
+                    <option value="PPT">PPT</option>
+                    <option value="DOC/DOCX">DOC/DOCX</option>
+                    <option value="TXT">TXT</option>
+                    <option value="IMAGE">IMAGE</option>
+                    <option value="ZIP/RAR">ZIP/RAR</option>
+                </select>
+                <label>Description:</label><br>
+                <textarea class="form-control" name="description">
+
+                </textarea><br>
+                <button type="submit" value="SUBMIT">Submit<img src="{% static 'images/arrow_icon.png'%}" alt=""></button>
+            </form>
+        </div>
+        <div class="col-sm-6">
+            <img src="{% static 'images/uploadnotes.jpg' %}" style="width:90%; height:400px;" class="mt-2">
+        </div>
+    </div>
+
+</div>
+</body>
+
+</html>
+{%ifequal error "no"%}
+<script>
+    alert('Notes Uploaded Successfully');
+</script>
+{%endifequal %}
+
+{%ifequal error "yes"%}
+<script>
+    alert('Something Went Wrong, Try Again');
+</script>
+{%endifequal%}
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'usernavigation.html' %}
+{% load static %}
+{% block body %}
+<style>
+        *{
+        padding:0;
+        margin:0;
+        box-sizing:border-box;
+        }
+        body{
+        font-family:'outfit';
+        background:linear-gradient(#ffdad5,#fff7f9);
+        }
+</style>
+<div class="contact-container">
+    <h2 class="text-center">PROFILE</h2>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <b>Full Name :</b>
+        </div>
+        <div class="col-md-6" style="text-transform:capitalize">
+            {{data.user.first_name}} {{data.user.last_name}}
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <b>Email Id :</b>
+        </div>
+        <div class="col-md-6">
+            {{data.user.username}}
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <b>Contact :</b>
+        </div>
+        <div class="col-md-6">
+            {{data.contact}}
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <b>Branch :</b>
+        </div>
+        <div class="col-md-6">
+            {{data.branch}}
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <b>UserType :</b>
+        </div>
+        <div class="col-md-6">
+            {{data.role}}
+        </div>
+    </div>
+    <center><a href="{% url 'edit_profile' %}" class="btn btn-primary mt-5">EDIT PROFILE</a></center>
+</div>
+
+{% endblock %}

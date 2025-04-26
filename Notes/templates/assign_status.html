@@ -1,0 +1,103 @@
+{% extends 'admin_nav.html'%}
+{% block body%}
+{% load static%}
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.0.3/js/dataTables.bootstrap4.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.bootstrap4.css">
+<script>
+    new DataTable('#example');
+</script>
+<style>
+    *{
+        padding:0;
+        margin:0;
+        box-sizing:border-box;
+        }
+        body{
+        font-family:'outfit';
+        background:linear-gradient(#ffdad5,#fff7f9);
+        }
+        .contact-container{
+        height:100vh;
+        display:flex;
+        align-items:center;
+        justify-content:space-evenly;
+        }
+        .contact-left{
+        display:flex;
+        flex-direction:column;
+        align-items:start;
+        gap:20px;
+        }
+        h2{
+        font-weight:600;
+        color:#a363aa;
+        font-size:40px;
+        margin-bottom:5px;
+        }
+        .contact-inputs{
+        width:400px;
+        height:50px;
+        border:none;
+        outline:none;
+        padding-left:25px;
+        font-weight:500;
+        color:#666;
+        border-radius:50px;
+        }
+        .contact-inputs:focus{
+        border:2px solid #ff994f;
+        }
+        .contact-inputs::placeholder{
+        color:#a9a9a9;
+        }
+        .contact-left button{
+        display:flex;
+        align-items:center;
+        padding:15px 30px;
+        font-size:16px;
+        color:#fff;
+        gap:10px;
+        border:none;
+        border-radius:50px;
+        background:linear-gradient(270deg,#ff994f,#fa6d86);
+        cursor:pointer;
+        }
+        .contact-left button img{
+        height:15px;
+        }
+</style>
+<div class="contact-container">
+    <form method="post" class="contact-left">
+        {% csrf_token %}
+      <div class="contact-left-title">
+            <h2>ASSIGN STATUS</h2>
+            <hr>
+      </div>
+      <input type="text" name="notesid" value="{{notes.id}}" class="contact-inputs" readonly>
+      <select name="status" class="contact-inputs">
+            <option value="Accept">Accept</option>
+            <option value="Reject">Reject</option>
+        </select>
+      <button type="submit">Submit<img src="{% static 'images/arrow_icon.png'%}" alt=""></button>
+    </form>
+ </div>
+{%ifequal error "no"%}
+<script>
+    alert('Status Assigned Successfully');
+    window.location=('{% url 'all_notes' %}')
+</script>
+{%endifequal %}
+
+{%ifequal error "yes"%}
+<script>
+    alert('Something Went Wrong, Try Again');
+</script>
+{%endifequal%}
+
+{% endblock %}
